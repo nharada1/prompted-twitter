@@ -1,0 +1,13 @@
+{
+  "name": "prompted-feed",
+  "private": true,
+  "description": "Chrome extension that filters your X/Twitter home feed against your own prompt with a low-cost language model.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.cjs\"",
+    "icons": "./scripts/render-icons.sh",
+    "package": "./scripts/package.sh"
+  }
+}

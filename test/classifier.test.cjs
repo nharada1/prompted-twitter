@@ -2,7 +2,7 @@
 
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const classifier = require("./classifier.js");
+const classifier = require("../src/lib/classifier.js");
 
 test("builds a cheap, non-reasoning structured Responses API request", () => {
   const request = classifier.buildRequest(

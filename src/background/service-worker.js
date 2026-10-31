@@ -1,6 +1,6 @@
 "use strict";
 
-importScripts("classifier.js", "history.js");
+importScripts("/lib/classifier.js", "/lib/history.js");
 
 const classifier = globalThis.PromptedFeedClassifier;
 const historyTools = globalThis.PromptedFeedHistory;
