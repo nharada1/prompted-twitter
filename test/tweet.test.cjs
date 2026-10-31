@@ -2,7 +2,7 @@
 
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const tweet = require("./tweet.js");
+const tweet = require("../src/lib/tweet.js");
 
 test("uses a stable X status id when available", () => {
   const result = tweet.tweetFromParts({

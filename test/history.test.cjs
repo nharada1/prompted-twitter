@@ -2,7 +2,7 @@
 
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const history = require("./history.js");
+const history = require("../src/lib/history.js");
 
 test("records classifications in hourly buckets and lifetime totals", () => {
   let result = history.record(null, [

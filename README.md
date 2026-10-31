@@ -6,7 +6,7 @@ Prompted Feed is an unpacked Manifest V3 Chrome extension that filters the X/Twi
 
 1. Open `chrome://extensions` in Chrome.
 2. Turn on **Developer mode**.
-3. Click **Load unpacked** and choose this repository directory.
+3. Click **Load unpacked** and choose the `src/` directory of this repository.
 4. The settings page opens automatically. Add your feed preference and an OpenAI API key, leave `gpt-5.6-luna` selected, then click **Save & test**.
 5. Enable filtering and open `https://x.com/home` (or `https://twitter.com/home`).
 
@@ -51,10 +51,31 @@ Post author text, post text, and useful media alt text are sent directly to the 
 
 The OpenAI key is stored in `chrome.storage.local`, not sync storage. This is convenient for a personal unpacked extension, but a browser extension is still client-side software. Do not publish or distribute a copy with a key embedded in it. For a multi-user release, replace the direct API call with a small authenticated backend so users never receive a shared API credential.
 
-## Test
+## Project structure
+
+```
+src/                      Extension root (load this directory unpacked)
+  manifest.json
+  background/             Service worker: OpenAI calls, badge, history storage
+  content/                Content script and styles injected into x.com
+  lib/                    Shared modules (also loaded by the Node tests)
+  popup/                  Toolbar popup
+  options/                Settings page
+  styles/ui.css           Shared popup/options styles
+  icons/                  icon.svg source and rendered PNGs (16/32/48/128)
+test/                     node:test unit tests for src/lib
+scripts/                  Icon rendering and packaging helpers
+```
+
+## Development
 
 ```bash
-node --test *.test.cjs
+npm test          # run unit tests (Node 20+, no dependencies)
+npm run icons     # re-render src/icons/*.png from icon.svg with headless Chrome
+npm run package   # zip src/ into dist/prompted-feed-<version>.zip
 ```
+
+The version lives in `src/manifest.json`. After editing files, click the reload
+button for the extension on `chrome://extensions`.
 
 The X/Twitter DOM changes occasionally. The implementation intentionally relies on the relatively stable `article[data-testid="tweet"]`, `tweetText`, and `User-Name` accessibility/test hooks and falls back to the article's visible text for image- or link-only posts.
