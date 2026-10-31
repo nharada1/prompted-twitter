@@ -3,7 +3,7 @@
 const DEFAULTS = {
   enabled: false,
   prompt: "",
-  model: "gpt-5.6-luna",
+  model: "gpt-6-luna",
   failOpen: false,
 };
 

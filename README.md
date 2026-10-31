@@ -7,7 +7,7 @@ Prompted Feed is an unpacked Manifest V3 Chrome extension that filters the X/Twi
 1. Open `chrome://extensions` in Chrome.
 2. Turn on **Developer mode**.
 3. Click **Load unpacked** and choose the `src/` directory of this repository.
-4. The settings page opens automatically. Add your feed preference and an OpenAI API key, leave `gpt-5.6-luna` selected, then click **Save & test**.
+4. The settings page opens automatically. Add your feed preference and an OpenAI API key, leave `gpt-6-luna` selected, then click **Save & test**.
 5. Enable filtering and open `https://x.com/home` (or `https://twitter.com/home`).
 
 No X/Twitter cookie is required. The content script runs in the page you are already signed into, reads rendered post text, and does not request Chrome cookie access.
