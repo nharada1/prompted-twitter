@@ -7,7 +7,7 @@ const historyTools = globalThis.PromptedFeedHistory;
 const DEFAULT_SETTINGS = {
   enabled: false,
   prompt: "",
-  model: "gpt-5.6-luna",
+  model: "gpt-6-luna",
   failOpen: false,
 };
 
@@ -128,6 +128,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   return false;
 });
 
-chrome.runtime.onInstalled.addListener((details) => {
+const RETIRED_DEFAULT_MODELS = ["gpt-5.6-luna"];
+
+chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === "install") chrome.runtime.openOptionsPage();
+  if (details.reason === "update") {
+    const { model } = await chrome.storage.sync.get("model");
+    if (RETIRED_DEFAULT_MODELS.includes(model)) await chrome.storage.sync.set({ model: DEFAULT_SETTINGS.model });
+  }
 });

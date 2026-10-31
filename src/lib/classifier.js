@@ -11,7 +11,7 @@
     }
 
     return {
-      model: settings.model || "gpt-5.6-luna",
+      model: settings.model || "gpt-6-luna",
       reasoning: { effort: "none" },
       store: false,
       instructions: [

@@ -6,11 +6,11 @@ const classifier = require("../src/lib/classifier.js");
 
 test("builds a cheap, non-reasoning structured Responses API request", () => {
   const request = classifier.buildRequest(
-    { model: "gpt-5.6-luna", prompt: "Only distributed systems posts" },
+    { model: "gpt-6-luna", prompt: "Only distributed systems posts" },
     [{ id: "status:1", author: "Ada", text: "Raft notes", media: [] }],
   );
 
-  assert.equal(request.model, "gpt-5.6-luna");
+  assert.equal(request.model, "gpt-6-luna");
   assert.deepEqual(request.reasoning, { effort: "none" });
   assert.equal(request.store, false);
   assert.equal(request.text.format.type, "json_schema");
