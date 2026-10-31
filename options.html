@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prompted Feed settings</title>
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body class="options-page">
+    <main class="panel options-panel">
+      <div class="eyebrow">X / Twitter feed filter</div>
+      <h1>Prompted Feed</h1>
+      <p class="lede">Only show home-feed posts that match your instructions.</p>
+
+      <form id="settings">
+        <label class="toggle-row">
+          <span><strong>Enable filtering</strong><small>Applies only to the Home timeline.</small></span>
+          <input id="enabled" type="checkbox" />
+        </label>
+
+        <label for="prompt">What do you want to see?</label>
+        <textarea id="prompt" rows="7" maxlength="4000" required placeholder="Examples: Practical AI engineering, thoughtful product design, and important news about developer tools. Exclude engagement bait, memes, and generic motivational posts."></textarea>
+        <p class="hint">Write both positive and negative preferences. Ambiguous posts are hidden.</p>
+
+        <div class="field-grid">
+          <div>
+            <label for="model">Model</label>
+            <input id="model" type="text" value="gpt-5.6-luna" required />
+          </div>
+          <div>
+            <label for="failureMode">If the API fails</label>
+            <select id="failureMode">
+              <option value="closed">Hide unclassified posts</option>
+              <option value="open">Show unclassified posts</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="apiKey">OpenAI API key</label>
+        <div class="secret-row">
+          <input id="apiKey" type="password" autocomplete="off" placeholder="sk-…" />
+          <button id="clearKey" class="secondary compact" type="button">Clear saved key</button>
+        </div>
+        <p id="keyStatus" class="hint"></p>
+        <div class="privacy-note">
+          Post text is sent directly from this extension to the OpenAI API. The key is stored in Chrome's local extension storage and is never sent to X/Twitter. Do not distribute a build containing your key.
+        </div>
+
+        <div class="actions">
+          <button id="save" type="submit">Save settings</button>
+          <button id="test" class="secondary" type="button">Save &amp; test</button>
+          <span id="status" role="status"></span>
+        </div>
+      </form>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

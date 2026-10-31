@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body class="popup-page">
+    <main class="panel popup-panel">
+      <div class="popup-heading">
+        <div>
+          <div class="eyebrow">X / Twitter</div>
+          <h1>Prompted Feed</h1>
+        </div>
+        <span id="statePill" class="pill">Loading</span>
+      </div>
+      <p id="summary" class="lede small"></p>
+      <div id="stats" class="stats" hidden>
+        <div><strong id="kept">0</strong><span>shown</span></div>
+        <div><strong id="hidden">0</strong><span>hidden</span></div>
+        <div><strong id="pending">0</strong><span>checking</span></div>
+      </div>
+      <p id="error" class="error"></p>
+      <div class="actions stacked">
+        <button id="toggle" type="button">Pause filter</button>
+        <button id="retry" class="secondary" type="button">Retry API errors</button>
+        <button id="options" class="secondary" type="button">Settings</button>
+      </div>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

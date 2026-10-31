@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Prompted Feed",
+  "description": "Filters your X/Twitter home feed against your own prompt with a low-cost language model.",
+  "version": "0.6.0",
+  "minimum_chrome_version": "114",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://api.openai.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Prompted Feed",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "css": ["content.css"],
+      "js": ["history.js", "tweet.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
